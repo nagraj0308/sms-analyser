@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">sms-analyser</string>
+
+    <string name="app_name">SMS Analyser</string>
+    <string name="report_in_pie_chart">Report in Pie Chart</string>
+    <string name="report_in_list">Report in List</string>
+    <string name="graph_view">Graph View</string>
+    <string name="list_view">List View</string>
+
 </resources>
