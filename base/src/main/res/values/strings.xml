@@ -1,0 +1,5 @@
+<resources>
+  <string name="default_error_text">Sorry Error!!,Try Again</string>
+  <string name="open_navigation_drawer">Open Navigation Drawer</string>
+  <string name="close_navigation_drawer">Close Navigation Drawer</string>
+</resources>

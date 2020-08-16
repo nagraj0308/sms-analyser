@@ -1,0 +1,25 @@
+<resources>
+
+  <style name="CoreAppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark"/>
+
+  <style name="CoreAppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+  <style name="SearchViewStyle" parent="Widget.AppCompat.Light.SearchView">
+    <item name="searchHintIcon">@null</item>
+    <item name="searchIcon">@null</item>
+  </style>
+
+  <style name="AppTheme.Toolbar.CitySelection" parent="@style/ThemeOverlay.AppCompat.ActionBar">
+    <item name="colorAccent">@android:color/white</item>
+    <item name="searchViewStyle">@style/SearchViewStyle</item>
+  </style>
+
+
+  <style name="Theme_Toolbar" parent="Theme.AppCompat.Light.NoActionBar">
+    <!-- This attributes is used by title -->
+    <item name="android:textColorPrimary">@color/white</item>
+    <item name="colorControlNormal">@color/color_back_button</item>
+  </style>
+
+</resources>

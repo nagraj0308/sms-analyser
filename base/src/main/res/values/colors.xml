@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="dark_text_color">#636363</color>
+  <color name="white">#ffffff</color>
+  <color name="colorTab">#D9F7F6</color>
+  <color name="color_divider">#F0F8F8</color>
+  <color name="color_back_button">#FF9100</color>
+  <color name="color_transparent">@android:color/transparent</color>
+</resources>
