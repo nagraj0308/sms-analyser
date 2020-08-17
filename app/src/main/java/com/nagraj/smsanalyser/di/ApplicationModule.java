@@ -1,7 +1,11 @@
 package com.nagraj.smsanalyser.di;
 
 import android.content.Context;
+import com.nagraj.local.MessageService;
+import com.nagraj.model.Model;
+import javax.inject.Singleton;
 import dagger.Module;
+import dagger.Provides;
 
 
 @Module
@@ -13,17 +17,17 @@ public class ApplicationModule {
         this.context = context;
     }
 
-//    @Provides
-//    @Singleton
-//    AndroidServer0308Service provideService() {
-//        return RetrofitClass.getClient().create(AndroidServer0308Service.class);
-//    }
+    @Provides
+    @Singleton
+    MessageService provideService() {
+        return new MessageService() ;
+    }
 
-//    @Provides
-//    @Singleton
-//    Model provideModel(AndroidServer0308Service androidServer0308Service,PreferenceData preferenceData) {
-//        return new Model(androidServer0308Service,preferenceData);
-//    }
+    @Provides
+    @Singleton
+    Model provideModel(MessageService messageService) {
+        return new Model(messageService);
+    }
 
 
 

@@ -1,25 +1,29 @@
 package com.nagraj.model;
 
+import android.content.Context;
+
+import com.nagraj.local.Message;
+import com.nagraj.local.MessageService;
+
+import java.util.List;
+
 import javax.inject.Inject;
+
+import io.reactivex.Observable;
 
 public class Model {
 
-    // private final AndroidServer0308Service service;
-
-//    @Inject
-//    public Model(AndroidServer0308Service service, PreferenceData preferenceData) {
-//        //this.service = service;
-//    }
+     private final MessageService messageService;
 
     @Inject
-    public Model() {
+    public Model(MessageService messageService) {
+        this.messageService=messageService;
     }
 
-    //User
 
-//    public Observable<UserLoginResponse> loginUser(String username, String password) {
-//        return service.loginUser(new UserLoginRequest(username, password));
-//    }
+    public Observable<List<Message>> getMessages(Context context) {
+        return messageService.getMessages(context);
+    }
 
 
 //    public Observable<ProfilePicture> getAdminProfilePicture() {
