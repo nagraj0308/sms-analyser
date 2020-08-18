@@ -10,14 +10,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
-import androidx.fragment.app.FragmentManager;
-
 import com.nagraj.base.BaseActivity;
 import com.nagraj.local.Message;
 import com.nagraj.smsanalyser.App;
@@ -25,7 +22,6 @@ import com.nagraj.smsanalyser.R;
 import com.nagraj.smsanalyser.databinding.ActivityHomeBinding;
 import com.nagraj.smsanalyser.ui.chart.ChartFragment;
 import com.nagraj.smsanalyser.ui.list.ListFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +39,7 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     int currentItem = 0;
     int filterOption = 0;
     List<Message> messageList = new ArrayList<>();
-
     ListFragment listFragment;
-
     Menu menu;
 
     @Override
@@ -125,16 +119,16 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
             btnChart.getDrawable().setTint(Color.parseColor("#FFFFFF"));
             btnList.getDrawable().setTint(Color.parseColor("#000000"));
             if (currentItem != 0) {
-                replaceFragment(ChartFragment.newInstance());
                 currentItem = 0;
+                replaceFragment(ChartFragment.newInstance());
             }
         });
         btnList.setOnClickListener(v -> {
             btnList.getDrawable().setTint(Color.parseColor("#FFFFFF"));
             btnChart.getDrawable().setTint(Color.parseColor("#000000"));
             if (currentItem != 1) {
-                replaceFragment(ListFragment.newInstance());
                 currentItem = 1;
+                replaceFragment(ListFragment.newInstance());
             }
         });
 
@@ -185,8 +179,6 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     @Override
     public void setMessages(List<Message> messageList) {
         this.messageList = messageList;
-        showToast(messageList.size() + "");
-        log(messageList.toString());
         currentItem = 0;
         replaceFragment(ChartFragment.newInstance());
     }

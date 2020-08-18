@@ -4,20 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.nagraj.local.Message;
 import com.nagraj.smsanalyser.App;
 import com.nagraj.smsanalyser.R;
 import com.nagraj.smsanalyser.ui.BaseHomeFragment;
 import com.nagraj.smsanalyser.databinding.FragmentListBinding;
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
 
 public class ListFragment extends BaseHomeFragment implements ListView {

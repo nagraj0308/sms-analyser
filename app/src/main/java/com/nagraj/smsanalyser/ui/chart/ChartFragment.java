@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.PieData;
@@ -16,10 +15,7 @@ import com.nagraj.smsanalyser.App;
 import com.nagraj.smsanalyser.R;
 import com.nagraj.smsanalyser.databinding.FragmentChartBinding;
 import com.nagraj.smsanalyser.ui.BaseHomeFragment;
-
 import java.util.ArrayList;
-import java.util.List;
-
 import javax.inject.Inject;
 
 public class ChartFragment extends BaseHomeFragment implements ChartView {
@@ -79,23 +75,19 @@ public class ChartFragment extends BaseHomeFragment implements ChartView {
         tnxTypeList.add(new PieEntry(totalCreditAmount,"Income"));
         tnxTypeList.add(new PieEntry(totalDebitAmount,"Expense"));
 
-        //create the data set
         PieDataSet pieDataSet = new PieDataSet(tnxTypeList, "Transactions Type");
         pieDataSet.setSliceSpace(4);
         pieDataSet.setValueTextSize(14);
 
-        //add colors to dataset
         ArrayList<Integer> colors = new ArrayList<>();
         colors.add(Color.RED);
         colors.add(Color.GREEN);
         pieDataSet.setColors(colors);
 
-        //add legend to chart
         Legend legend = pieChart.getLegend();
         legend.setForm(Legend.LegendForm.CIRCLE);
         legend.setPosition(Legend.LegendPosition.LEFT_OF_CHART);
 
-        //create pie data object
         PieData pieData=new PieData(pieDataSet);
         pieChart.setData(pieData);
         pieChart.invalidate();
