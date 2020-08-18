@@ -5,5 +5,12 @@
     <string name="report_in_list">Report in List</string>
     <string name="graph_view">Graph View</string>
     <string name="list_view">List View</string>
+    <string name="sno">S No</string>
+    <string name="sender">Sender</string>
+    <string name="tnx_type">Tnx Type</string>
+    <string name="amount_in_rupee">Amount(₹)</string>
+    <string name="only_debit">Only Debit</string>
+    <string name="only_credit">Only Credit</string>
+    <string name="all">All</string>
 
 </resources>

@@ -4,24 +4,11 @@
 
 
   <!--New Dimens in threw out the apps -->
-  <dimen name="font_size_b">4sp</dimen>
-  <dimen name="font_size_c">6sp</dimen>
-  <dimen name="font_size_d">8sp</dimen>
-  <dimen name="font_size_e">10sp</dimen>
-  <dimen name="font_size_f">12sp</dimen>
-  <dimen name="font_size_g">14sp</dimen>
-  <dimen name="font_size_h">16sp</dimen>
-  <dimen name="font_size_i">18sp</dimen>
-  <dimen name="font_size_j">20sp</dimen>
-  <dimen name="font_size_k">22sp</dimen>
-  <dimen name="font_size_l">24sp</dimen>
-  <dimen name="font_size_m">26sp</dimen>
-  <dimen name="font_size_n">28sp</dimen>
-  <dimen name="font_size_o">30sp</dimen>
-  <dimen name="font_size_p">32sp</dimen>
-  <dimen name="font_size_q">34sp</dimen>
-  <dimen name="font_size_s">36sp</dimen>
-  <dimen name="font_size_t">38sp</dimen>
+
+  <dimen name="font_size_small">14sp</dimen>
+  <dimen name="font_size_medium">16sp</dimen>
+  <dimen name="font_size_large">18sp</dimen>
+
 
   <dimen name="space_size_d">2dp</dimen>
   <dimen name="space_size_e">3dp</dimen>

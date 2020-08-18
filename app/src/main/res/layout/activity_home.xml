@@ -18,23 +18,27 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
+        android:padding="5dp"
         android:weightSum="2">
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_chart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:text="Chart" />
+            android:text="@string/graph_view"
+            android:background="@color/color_transparent"
+            android:src="@drawable/drawable_pie"
+            />
 
-        <Button
+        <ImageButton
             android:id="@+id/btn_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/colorAccent"
-            android:text="List" />
+            android:background="@color/color_transparent"
+            android:src="@drawable/drawable_list"
+            android:text="@string/list_view" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_chart"
+            android:icon="@drawable/drawable_pie"
+            android:title="@string/graph_view" />
+        <item
+            android:id="@+id/nav_list"
+            android:icon="@drawable/drawable_list"
+            android:title="@string/list_view" />
+    </group>
+</menu>

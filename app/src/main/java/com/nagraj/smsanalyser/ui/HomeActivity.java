@@ -2,10 +2,11 @@ package com.nagraj.smsanalyser.ui;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -19,6 +20,7 @@ import com.nagraj.smsanalyser.databinding.ActivityHomeBinding;
 import com.nagraj.smsanalyser.ui.chart.ChartFragment;
 import com.nagraj.smsanalyser.ui.list.ListFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,10 +32,10 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     @Inject
     HomePresenter presenter;
     private ActivityHomeBinding binding;
-    Button btnChart, btnList;
+    ImageButton btnChart, btnList;
     FragmentContainerView fcvHome;
     int currentItem = 0;
-    List<Message> messageList;
+    List<Message> messageList= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +76,19 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
         fcvHome = binding.fcvHome;
         btnChart = binding.btnChart;
         btnList = binding.btnList;
+        btnChart.getDrawable().setTint(Color.parseColor("#FFFFFF"));
+        btnList.getDrawable().setTint(Color.parseColor("#000000"));
         btnChart.setOnClickListener(v -> {
+            btnChart.getDrawable().setTint(Color.parseColor("#FFFFFF"));
+            btnList.getDrawable().setTint(Color.parseColor("#000000"));
             if (currentItem != 0) {
                 replaceFragment(ChartFragment.newInstance());
                 currentItem = 0;
             }
         });
         btnList.setOnClickListener(v -> {
+            btnList.getDrawable().setTint(Color.parseColor("#FFFFFF"));
+            btnChart.getDrawable().setTint(Color.parseColor("#000000"));
             if (currentItem != 1) {
                 replaceFragment(ListFragment.newInstance());
                 currentItem = 1;
@@ -133,5 +141,10 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
         log(messageList.toString());
         currentItem = 0;
         replaceFragment(ChartFragment.newInstance());
+    }
+
+    @Override
+    public List<Message> getMessageList() {
+        return messageList;
     }
 }

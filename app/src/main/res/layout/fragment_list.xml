@@ -1,21 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
+
     <RelativeLayout
         android:id="@+id/rl_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_feeds"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <TextView
+
+        <LinearLayout
+            android:id="@+id/ll_heading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="List"/>
+            android:background="@color/colorText"
+            android:orientation="horizontal"
+            android:weightSum="18"
+            >
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/sno"
+                android:gravity="center"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_sender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="8"
+                android:gravity="end"
+                android:paddingEnd="10dp"
+                android:text="@string/sender"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_amount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:gravity="end"
+                android:text="@string/amount_in_rupee"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/white"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_is_credit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_weight="3"
+                android:text="@string/tnx_type"
+                android:textSize="@dimen/font_size_small"
+                android:textColor="@color/white"/>
+        </LinearLayout>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_messages"
+            android:layout_below="@+id/ll_heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </RelativeLayout>
 
 </FrameLayout>

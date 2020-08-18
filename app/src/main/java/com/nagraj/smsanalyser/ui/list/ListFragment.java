@@ -11,6 +11,7 @@ import com.nagraj.smsanalyser.R;
 import com.nagraj.smsanalyser.databinding.FragmentListBinding;
 import com.nagraj.smsanalyser.ui.BaseHomeFragment;
 
+
 import javax.inject.Inject;
 
 public class ListFragment extends BaseHomeFragment implements ListView {
@@ -18,7 +19,7 @@ public class ListFragment extends BaseHomeFragment implements ListView {
     ListPresenter presenter;
 
     private FragmentListBinding binding;
-    RecyclerView rcvUserFeeds;
+    RecyclerView rcvMessages;
 
 
     public ListFragment() {
@@ -49,15 +50,15 @@ public class ListFragment extends BaseHomeFragment implements ListView {
     @Override
     protected void initViews() {
         activityCallback.setTitle(getString(R.string.report_in_list));
-        rcvUserFeeds = binding.rvFeeds;
+        rcvMessages = binding.rvMessages;
     }
 
     @Override
     protected void onReady() {
         presenter.attachView(this);
         LinearLayoutManager llm = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        rcvUserFeeds.setLayoutManager(llm);
-
+        rcvMessages.setLayoutManager(llm);
+        rcvMessages.setAdapter(new ListAdapter(activityCallback.getMessageList()));
     }
 
     @Override

@@ -29,12 +29,12 @@ public class MessageService {
                 if (c.moveToFirst()) {
                     for (int j = 0; j < totalSMS; j++) {
                         String smsDate = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.DATE));
-                        String number = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
+                        String sender = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.ADDRESS));
                         String body = c.getString(c.getColumnIndexOrThrow(Telephony.Sms.BODY));
-                        Date dateFormat = new Date(Long.parseLong(smsDate));
+                        Date date = new Date(Long.parseLong(smsDate));
                         String type;
                         if (Integer.parseInt(c.getString(c.getColumnIndexOrThrow(Telephony.Sms.TYPE)))==Telephony.Sms.MESSAGE_TYPE_INBOX){
-                            messageList.add(Message.create(body));
+                            messageList.add(Message.create(sender,(j%2)==1,j/3,date));
                         }
                         c.moveToNext();
                     }
