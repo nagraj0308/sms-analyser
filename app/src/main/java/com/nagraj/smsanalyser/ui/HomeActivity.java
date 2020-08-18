@@ -5,13 +5,19 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentContainerView;
+import androidx.fragment.app.FragmentManager;
+
 import com.nagraj.base.BaseActivity;
 import com.nagraj.local.Message;
 import com.nagraj.smsanalyser.App;
@@ -35,7 +41,12 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     ImageButton btnChart, btnList;
     FragmentContainerView fcvHome;
     int currentItem = 0;
-    List<Message> messageList= new ArrayList<>();
+    int filterOption = 0;
+    List<Message> messageList = new ArrayList<>();
+
+    ListFragment listFragment;
+
+    Menu menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +54,38 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu=menu;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_right, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        listFragment=(ListFragment)getSupportFragmentManager().findFragmentById(R.id.fcv_home);
+        switch (item.getItemId()) {
+            case R.id.nav_all:
+                filterOption=0;
+                listFragment.setFilterOption(filterOption);
+                item.setChecked(true);
+                return true;
+            case R.id.nav_only_credit:
+                filterOption=1;
+                listFragment.setFilterOption(filterOption);
+                item.setChecked(true);
+                return true;
+            case R.id.nav_only_debit:
+                filterOption=2;
+                listFragment.setFilterOption(filterOption);
+                item.setChecked(true);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -102,7 +145,7 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
         presenter.attachView(this);
         if (ContextCompat.checkSelfPermission(getBaseContext(), "android.permission.READ_SMS") == PackageManager.PERMISSION_GRANTED) {
             presenter.getMessages(this);
-        }else{
+        } else {
             ActivityCompat.requestPermissions(this, new String[]{"android.permission.READ_SMS"}, REQUEST_CODE_SMS_PERMISSIONS);
 
         }
@@ -119,10 +162,15 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     }
 
     @Override
-    public void setTitle(String title) {
+    public void setPageData(String title,boolean isChartPage){
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(title);
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimaryDark)));
+        }
+        if(isChartPage){
+            menu.setGroupVisible(R.id.mg_option,false);
+        }else {
+            menu.setGroupVisible(R.id.mg_option,true);
         }
     }
 
@@ -137,7 +185,7 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     @Override
     public void setMessages(List<Message> messageList) {
         this.messageList = messageList;
-        showToast(messageList.size()+"");
+        showToast(messageList.size() + "");
         log(messageList.toString());
         currentItem = 0;
         replaceFragment(ChartFragment.newInstance());
@@ -146,5 +194,10 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
     @Override
     public List<Message> getMessageList() {
         return messageList;
+    }
+
+    @Override
+    public int getFilterOption() {
+        return filterOption;
     }
 }

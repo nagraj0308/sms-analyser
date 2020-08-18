@@ -17,9 +17,11 @@ public abstract class BaseHomeFragment extends BaseFragment {
 
     public interface HomeActivityCallback {
 
-        void setTitle(String title);
+        void setPageData(String title,boolean isChartPage);
 
         List<Message> getMessageList();
+
+        int getFilterOption();
 
     }
 }

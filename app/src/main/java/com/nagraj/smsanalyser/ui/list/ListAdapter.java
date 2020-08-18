@@ -13,7 +13,6 @@ import java.util.List;
 
 public class ListAdapter extends RecyclerView.Adapter<ListBinder> {
     List<Message> messageList;
-    String username;
 
     public ListAdapter(List<Message> messageList) {
         this.messageList = messageList;

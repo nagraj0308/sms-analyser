@@ -45,7 +45,7 @@ public class ChartFragment extends BaseHomeFragment implements ChartView {
 
     @Override
     protected void initViews() {
-        activityCallback.setTitle(getString(R.string.report_in_pie_chart));
+        activityCallback.setPageData(getString(R.string.report_in_pie_chart),true);
     }
 
     @Override
