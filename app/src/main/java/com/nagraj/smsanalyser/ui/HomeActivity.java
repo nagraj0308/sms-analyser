@@ -98,10 +98,7 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
         if (requestCode == REQUEST_CODE_SMS_PERMISSIONS) {
             if (grantResults.length > 0 &&
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                if (ContextCompat.checkSelfPermission(this,
-                        Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
-                    presenter.getMessages(this);
-                }
+                presenter.getMessages(this);
             } else {
                 showToast("you have no read msg permission");
             }
@@ -161,11 +158,7 @@ public class HomeActivity extends BaseActivity implements HomeView, BaseHomeFrag
             getSupportActionBar().setTitle(title);
             getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimaryDark)));
         }
-        if(isChartPage){
-            menu.setGroupVisible(R.id.mg_option,false);
-        }else {
-            menu.setGroupVisible(R.id.mg_option,true);
-        }
+        menu.setGroupVisible(R.id.mg_option, !isChartPage);
     }
 
     private void replaceFragment(Fragment fragment) {
